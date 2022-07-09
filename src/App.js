@@ -1,9 +1,48 @@
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+// styles
 import './App.css';
+
+// pages and components
+import Home from './pages/home/Home';
+import Dashboard from './pages/dashboard/Dashboard';
+import Article from './pages/article/Article';
+import Login from './pages/login/Login';
+import Signup from './pages/signup/Signup';
+import Logout from './pages/logout/Logout';
+import Navbar from './components/Navbar';
 
 function App () {
 	return (
 		<div className="App">
-			<h2>Article Site</h2>
+			<BrowserRouter>
+				<Navbar />
+				<Switch>
+					<Route exact path="/">
+						<Home />
+					</Route>
+
+					<Route path="/dashboard">
+						<Dashboard />
+					</Route>
+
+					<Route path="/login">
+						<Login />
+					</Route>
+
+					<Route path="/signup">
+						<Signup />
+					</Route>
+
+					<Route path="/logout">
+						<Logout />
+					</Route>
+
+					<Route path="/articles/:id">
+						<Article />
+					</Route>
+				</Switch>
+			</BrowserRouter>
 		</div>
 	);
 }
