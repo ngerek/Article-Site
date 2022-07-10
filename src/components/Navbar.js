@@ -6,8 +6,11 @@ import './Navbar.css';
 
 const Navbar = () => {
 	return (
-		<nav>
+		<nav className="navbar">
 			<ul>
+				<li className="title">
+					<Link to="/">ArticleSite</Link>
+				</li>
 				<li>
 					<Link to="/">Home</Link>
 				</li>
@@ -21,7 +24,9 @@ const Navbar = () => {
 					<Link to="/signup">Signup</Link>
 				</li>
 				<li>
-					<Link to="/logout">Logout</Link>
+					<Link to="/logout" className="logout">
+						Logout
+					</Link>
 				</li>
 			</ul>
 		</nav>
