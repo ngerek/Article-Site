@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useLogin } from '../../hooks/useLogin';
 
 // styles
 import './Login.css';
@@ -7,8 +8,16 @@ const Login = () => {
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
 
+	const { login } = useLogin();
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		login(email, password);
+	};
+
 	return (
-		<form className="login-form">
+		<form className="login-form" onSubmit={handleSubmit}>
 			<h2>Login</h2>
 
 			<label>
