@@ -9,7 +9,6 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Article from './pages/article/Article';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
-import Logout from './pages/logout/Logout';
 import Navbar from './components/Navbar';
 
 function App () {
@@ -32,10 +31,6 @@ function App () {
 
 					<Route path="/signup">
 						<Signup />
-					</Route>
-
-					<Route path="/logout">
-						<Logout />
 					</Route>
 
 					<Route path="/articles/:id">
