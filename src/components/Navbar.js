@@ -1,19 +1,28 @@
-import React from 'react';
+import { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
+import { AuthContext } from '../context/AuthContext';
 
 // styles
 import './Navbar.css';
 
 const Navbar = () => {
+	const { logout } = useLogout();
+	const { user } = useContext(AuthContext);
 	return (
 		<nav className="navbar">
 			<ul>
-				<li className="title">
-					<Link to="/">ArticleSite</Link>
-				</li>
+				<Fragment>
+					<li className="title">
+						<Link to="/">ArticleSite</Link>
+					</li>
+					{user && <p style={{ fontWeight: 'bold' }}>hi, {user.displayName}</p>}
+				</Fragment>
+
 				<li>
 					<Link to="/">Home</Link>
 				</li>
+
 				<li>
 					<Link to="/dashboard">Dashboard</Link>
 				</li>
@@ -24,9 +33,9 @@ const Navbar = () => {
 					<Link to="/signup">Signup</Link>
 				</li>
 				<li>
-					<Link to="/logout" className="logout">
+					<button className="logout" onClick={logout}>
 						Logout
-					</Link>
+					</button>
 				</li>
 			</ul>
 		</nav>
