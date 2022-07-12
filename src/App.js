@@ -1,4 +1,6 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
 
 // styles
 import './App.css';
@@ -9,35 +11,47 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Article from './pages/article/Article';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
+import Error from './pages/error/Error';
 import Navbar from './components/Navbar';
 
 function App () {
+	const { user, isAuthReady } = useContext(AuthContext);
 	return (
 		<div className="App">
-			<BrowserRouter>
-				<Navbar />
-				<Switch>
-					<Route exact path="/">
-						<Home />
-					</Route>
+			{isAuthReady && (
+				<BrowserRouter>
+					<Navbar />
+					<Switch>
+						<Route exact path="/">
+							<Home />
+						</Route>
 
-					<Route path="/dashboard">
-						<Dashboard />
-					</Route>
+						<Route path="/dashboard">
+							{user && <Dashboard />}
+							{!user && <Redirect to="/login" />}
+						</Route>
 
-					<Route path="/login">
-						<Login />
-					</Route>
+						<Route path="/login">
+							{!user && <Login />}
+							{user && <Redirect to="/" />}
+						</Route>
 
-					<Route path="/signup">
-						<Signup />
-					</Route>
+						<Route path="/signup">
+							{!user && <Signup />}
+							{user && <Redirect to="/" />}
+						</Route>
 
-					<Route path="/articles/:id">
-						<Article />
-					</Route>
-				</Switch>
-			</BrowserRouter>
+						<Route path="/articles/:id">
+							{user && <Article />}
+							{!user && <Redirect to="/" />}
+						</Route>
+
+						<Route path="*">
+							<Error />
+						</Route>
+					</Switch>
+				</BrowserRouter>
+			)}
 		</div>
 	);
 }
