@@ -1,10 +1,11 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { auth } from '../firestore/config';
 
 export const useSignup = () => {
 	const [ isLoading, setIsLoading ] = useState(false);
 	const [ error, setError ] = useState(null);
+	const [ isCancelled, setIsCancelled ] = useState(false);
 
 	const { dispatch } = useContext(AuthContext);
 
@@ -16,16 +17,26 @@ export const useSignup = () => {
 
 			await res.user.updateProfile({ displayName: username });
 
-			dispatch({ type: 'LOGIN', payload: res.user });
+			// unmount component without error
+			if (!isCancelled) {
+				dispatch({ type: 'LOGIN', payload: res.user });
 
-			setIsLoading(false);
-			setError(null);
+				setIsLoading(false);
+				setError(null);
+			}
 		} catch (error) {
-			console.log(error.message);
-			setIsLoading(false);
-			setError(error.message);
+			// unmount component without error
+			if (!isCancelled) {
+				console.log(error.message);
+				setError(error.message);
+				setIsLoading(false);
+			}
 		}
 	};
+
+	useEffect(() => {
+		return () => setIsCancelled(true);
+	}, []);
 
 	return { isLoading, error, signup };
 };
