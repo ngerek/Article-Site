@@ -11,7 +11,7 @@ const Navbar = () => {
 	const { user } = useContext(AuthContext);
 
 	const styles = {
-		fontFamily: 'Roboto Slab',
+		fontFamily: 'Overlock',
 		fontWeight: 'Black',
 		letterSpacing: '0.11em',
 		color: '#fff',
