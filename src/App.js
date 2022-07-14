@@ -42,8 +42,7 @@ function App () {
 						</Route>
 
 						<Route path="/articles/:id">
-							{user && <Article />}
-							{!user && <Redirect to="/" />}
+							<Article />
 						</Route>
 
 						<Route path="*">
