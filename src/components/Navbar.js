@@ -2,6 +2,7 @@ import { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { AuthContext } from '../context/AuthContext';
+import { useCapitalize } from '../hooks/useCapitalize';
 
 // styles
 import './Navbar.css';
@@ -9,6 +10,8 @@ import './Navbar.css';
 const Navbar = () => {
 	const { logout } = useLogout();
 	const { user } = useContext(AuthContext);
+
+	const { captilizeName } = useCapitalize();
 
 	const styles = {
 		fontFamily: 'Overlock',
@@ -18,16 +21,6 @@ const Navbar = () => {
 		marginRight: '15px'
 	};
 
-	const captilizeDisplayName = (str) => {
-		let results = [];
-
-		for (let word of str.split(' ')) {
-			results.push(word[0].toUpperCase() + word.slice(1).toLowerCase());
-		}
-
-		return results.join(' ');
-	};
-
 	return (
 		<nav className="navbar">
 			<ul>
@@ -35,7 +28,7 @@ const Navbar = () => {
 					<li className="title">
 						<Link to="/">ArticleSite</Link>
 					</li>
-					{user && <p style={styles}>Hi, {captilizeDisplayName(user.displayName)}</p>}
+					{user && <p style={styles}>Hi, {captilizeName(user.displayName)}</p>}
 				</Fragment>
 
 				<li>
