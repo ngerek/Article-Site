@@ -1,0 +1,66 @@
+/* .article-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 40px;
+	max-width: 1200px;
+	margin: 40px auto;
+} */
+
+@media only screen and (min-width: 500px) {
+	.article-list {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 40px;
+		max-width: 1200px;
+		margin: 40px auto;
+	}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 600px) {
+	.article-list {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.article-list {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+.article-list .card {
+	background: #fff;
+	color: #333;
+	padding: 20px;
+	border-radius: 4px;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.article-list .card h3 {
+	/* color: #555; */
+	color: black;
+	margin-bottom: 6px;
+}
+.article-list .card p {
+	/* color: #999; */
+	font-size: 0.9em;
+}
+.article-list .card div {
+	color: #555;
+	font-size: 0.8em;
+	margin: 20px 0;
+	line-height: 1.5em;
+}
+
+/* overwritten index.css btn styling */
+.btn {
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	width: 120px;
+	padding: 8px;
+	border-radius: 4px;
+	margin: 20px auto 0;
+}
