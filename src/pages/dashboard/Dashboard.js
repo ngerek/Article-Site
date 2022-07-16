@@ -9,12 +9,13 @@ import './Dashboard.css';
 
 const Dashboard = () => {
 	const { user } = useContext(AuthContext);
-	const { documents, error } = useCollection('articles', [ 'uid', '==', user.uid ]);
+	const { documents, error, isLoading } = useCollection('articles', [ 'uid', '==', user.uid ]);
 
 	return (
 		<div className="container">
 			<div className="content">
-				{error && <p>{error}</p>}
+				{error && <p className="error">{error}</p>}
+				{isLoading && <p className="loading">Loading...</p>}
 				{documents && <ArticleList articles={documents} />}
 			</div>
 			<div className="sidebar">
