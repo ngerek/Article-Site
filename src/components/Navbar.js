@@ -17,8 +17,7 @@ const Navbar = () => {
 		fontFamily: 'Overlock',
 		fontWeight: 'Black',
 		letterSpacing: '0.11em',
-		color: '#fff',
-		marginRight: '15px'
+		color: '#fff'
 	};
 
 	return (
