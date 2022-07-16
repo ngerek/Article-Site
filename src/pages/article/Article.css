@@ -1,0 +1,15 @@
+.article {
+	max-width: 1200px;
+	margin: 60px auto;
+	padding: 20px;
+	line-height: 1.7em;
+	color: black;
+	background: #fff;
+	box-sizing: border-box;
+}
+
+.article div {
+	color: #555;
+	font-size: 0.8em;
+	margin: 20px 0;
+}
