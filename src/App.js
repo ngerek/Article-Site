@@ -1,6 +1,7 @@
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import Mode from './components/Mode';
 
 // styles
 import './App.css';
@@ -15,12 +16,13 @@ import Error from './pages/error/Error';
 import Navbar from './components/Navbar';
 
 function App () {
-	const { user, isAuthReady } = useContext(AuthContext);
+	const { user, isAuthReady, mode } = useContext(AuthContext);
 	return (
-		<div className="App">
+		<div className={`App ${mode}`}>
 			{isAuthReady && (
 				<BrowserRouter>
 					<Navbar />
+					<Mode />
 					<Switch>
 						<Route exact path="/">
 							<Home />
