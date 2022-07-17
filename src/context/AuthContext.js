@@ -11,6 +11,8 @@ const authReducer = (state, action) => {
 			return { ...state, user: null };
 		case 'AUTH_IS_READY':
 			return { ...state, user: action.payload, isAuthReady: true };
+		case 'CHANGE_MODE':
+			return { ...state, mode: action.payload };
 		default:
 			return state;
 	}
@@ -19,7 +21,8 @@ const authReducer = (state, action) => {
 export const AuthContextProvider = ({ children }) => {
 	const [ state, dispatch ] = useReducer(authReducer, {
 		user: null,
-		isAuthReady: false
+		isAuthReady: false,
+		mode: 'light'
 	});
 
 	useEffect(() => {
@@ -29,8 +32,13 @@ export const AuthContextProvider = ({ children }) => {
 		});
 	}, []);
 
+	const changeMode = (mode) => {
+		dispatch({ type: 'CHANGE_MODE', payload: mode });
+	};
+
 	console.log('authContext state:', state.user);
 	console.log(state.isAuthReady);
+	console.log(state.mode);
 
-	return <AuthContext.Provider value={{ ...state, dispatch }}>{children}</AuthContext.Provider>;
+	return <AuthContext.Provider value={{ ...state, dispatch, changeMode }}>{children}</AuthContext.Provider>;
 };
