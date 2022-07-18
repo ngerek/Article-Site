@@ -16,6 +16,11 @@ export const useCollection = (collection, _query) => {
 				ref = ref.where(...query).orderBy('createdAt', 'desc');
 			}
 
+			// order documents in home component
+			if (!query) {
+				ref = ref.orderBy('createdAt', 'desc');
+			}
+
 			setIsLoading(true);
 			const unsubscribe = ref.onSnapshot(
 				(snapshot) => {
