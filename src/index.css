@@ -65,3 +65,9 @@ ul {
 	background: #1f9751;
 	color: #fff;
 }
+
+/* dark mode */
+.loading.dark,
+.error.dark {
+	color: #fff;
+}
