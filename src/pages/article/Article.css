@@ -13,3 +13,23 @@
 	font-size: 0.8em;
 	margin: 20px 0;
 }
+
+/* dark mode */
+.article.dark {
+	background: #555;
+}
+
+.article.dark div,
+.article.dark p {
+	color: #e4e4e4;
+}
+
+.article.dark h2 {
+	color: #fff;
+}
+
+.btn.dark {
+	color: #555;
+	background: #e2e2e2;
+	border: 2px solid #e2e2e2;
+}
