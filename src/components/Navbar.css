@@ -42,3 +42,8 @@
 	background: #fff;
 	color: #333;
 }
+
+/* dark mode */
+.navbar.dark {
+	background: #555;
+}
