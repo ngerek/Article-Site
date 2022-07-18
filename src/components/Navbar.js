@@ -9,7 +9,7 @@ import './Navbar.css';
 
 const Navbar = () => {
 	const { logout } = useLogout();
-	const { user } = useContext(AuthContext);
+	const { user, mode } = useContext(AuthContext);
 
 	const { captilizeName } = useCapitalize();
 
@@ -21,7 +21,7 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="navbar">
+		<nav className={`navbar ${mode}`}>
 			<ul>
 				<Fragment>
 					<li className="title">
