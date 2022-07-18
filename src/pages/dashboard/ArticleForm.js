@@ -1,5 +1,6 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useContext } from 'react';
 import { useFirestore } from '../../hooks/useFirestore';
+import { AuthContext } from '../../context/AuthContext';
 
 const ArticleForm = ({ uid }) => {
 	const [ title, setTitle ] = useState('');
@@ -7,6 +8,8 @@ const ArticleForm = ({ uid }) => {
 	const [ body, setBody ] = useState('');
 
 	const { addDocument, state } = useFirestore('articles');
+
+	const { mode } = useContext(AuthContext);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -31,9 +34,9 @@ const ArticleForm = ({ uid }) => {
 	);
 
 	return (
-		<Fragment>
+		<div className={`form-container ${mode}`}>
 			<h3>Add an Article</h3>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} className={`form ${mode}`}>
 				<label>
 					<span>Title:</span>
 					<input type="text" onChange={(e) => setTitle(e.target.value)} value={title} required />
@@ -54,7 +57,7 @@ const ArticleForm = ({ uid }) => {
 				</label>
 				<button>Add Article</button>
 			</form>
-		</Fragment>
+		</div>
 	);
 };
 
