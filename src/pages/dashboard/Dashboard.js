@@ -8,14 +8,14 @@ import { useCollection } from '../../hooks/useCollection';
 import './Dashboard.css';
 
 const Dashboard = () => {
-	const { user } = useContext(AuthContext);
+	const { user, mode } = useContext(AuthContext);
 	const { documents, error, isLoading } = useCollection('articles', [ 'uid', '==', user.uid ]);
 
 	return (
 		<div className="container">
 			<div className="content">
-				{error && <p className="error">{error}</p>}
-				{isLoading && <p className="loading">Loading...</p>}
+				{error && <p className={`error ${mode}`}>{error}</p>}
+				{isLoading && <p className={`loading ${mode}`}>Loading...</p>}
 				{documents && <ArticleList articles={documents} />}
 			</div>
 			<div className="sidebar">
