@@ -35,12 +35,12 @@ function App () {
 
 						<Route path="/login">
 							{!user && <Login />}
-							{user && <Redirect to="/" />}
+							{user && <Redirect to="/dashboard" />}
 						</Route>
 
 						<Route path="/signup">
 							{!user && <Signup />}
-							{user && <Redirect to="/" />}
+							{user && <Redirect to="/dashboard" />}
 						</Route>
 
 						<Route path="/articles/:id">
