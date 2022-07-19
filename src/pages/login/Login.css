@@ -17,3 +17,16 @@
 	color: #777;
 	width: 100%;
 }
+
+/* dark mode */
+.login-form.dark label,
+.login-form.dark span,
+.login-form.dark h2 {
+	color: #fff;
+}
+
+.login-form.dark .btn {
+	color: #555;
+	background: #e2e2e2;
+	border: 2px solid #e2e2e2;
+}
