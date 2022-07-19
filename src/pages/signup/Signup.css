@@ -17,3 +17,16 @@
 	color: #777;
 	width: 100%;
 }
+
+/* dark mode */
+.signup-form.dark label,
+.signup-form.dark span,
+.signup-form.dark h2 {
+	color: #fff;
+}
+
+.signup-form.dark .btn {
+	color: #555;
+	background: #e2e2e2;
+	border: 2px solid #e2e2e2;
+}
