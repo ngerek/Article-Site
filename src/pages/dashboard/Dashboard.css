@@ -10,13 +10,13 @@
 .sidebar {
 	padding-left: 30px;
 }
-.sidebar form {
+.sidebar .form {
 	padding: 20px;
 	background: #1f9751;
 	border-radius: 10px;
 }
-.sidebar input,
-.sidebar textarea {
+.sidebar .form input,
+.sidebar .form textarea {
 	display: block;
 	width: 100%;
 	padding: 10px;
@@ -29,16 +29,16 @@
 	outline: none;
 }
 
-.sidebar textarea {
+.sidebar .form textarea {
 	height: 170px;
 	resize: vertical;
 }
-.sidebar label {
+.sidebar .form label {
 	margin: 0 auto 20px;
 	display: block;
 	color: #fff;
 }
-.sidebar button {
+.sidebar .form button {
 	color: #fff;
 	border: 2px solid #fff;
 	padding: 6px 12px;
@@ -49,12 +49,12 @@
 	display: block;
 	width: 100%;
 }
-.sidebar h3 {
+.sidebar .form-container h3 {
 	color: #1f9751;
 	margin-bottom: 20px;
 }
 
-/* transactions */
+/* articles */
 .articles li {
 	margin: 30px auto;
 	border: 2px solid #f2f2f2;
@@ -65,10 +65,11 @@
 	border-left: 3px solid #1f9751;
 	border-bottom: 3px solid #1f9751;
 }
-.articles .title {
+
+.articles p {
 	color: #777;
-	font-size: 1.4em;
 }
+
 .articles .author {
 	margin-left: auto;
 	margin-right: 40px;
@@ -76,8 +77,31 @@
 	font-weight: bold;
 	font-size: 1.6em;
 }
+
 .articles .delete {
 	margin-left: auto;
 	cursor: pointer;
-	filter: invert(50%);
+	filter: invert(40%);
+}
+
+/* dark mode */
+.sidebar .form.dark {
+	background: #404040;
+}
+
+.sidebar .form-container.dark h3 {
+	color: #e2e2e2;
+}
+
+.articles.dark .title {
+	color: #fff;
+}
+
+.articles.dark .delete {
+	filter: invert(100%);
+}
+
+.articles.dark li {
+	border-left: 3px solid #e2e2e2;
+	border-bottom: 3px solid #e2e2e2;
 }
