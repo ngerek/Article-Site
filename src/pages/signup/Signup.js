@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useSignup } from '../../hooks/useSignup';
+import { AuthContext } from '../../context/AuthContext';
 
 // styles
 import './Signup.css';
@@ -8,6 +9,8 @@ const Signup = () => {
 	const [ username, setUserName ] = useState('');
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
+
+	const { mode } = useContext(AuthContext);
 
 	const { signup } = useSignup();
 
@@ -18,7 +21,7 @@ const Signup = () => {
 	};
 
 	return (
-		<form className="signup-form" onSubmit={handleSubmit}>
+		<form className={`signup-form ${mode}`} onSubmit={handleSubmit}>
 			<h2>Signup</h2>
 			<label>
 				<span>username:</span>
