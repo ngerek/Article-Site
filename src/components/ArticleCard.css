@@ -70,8 +70,12 @@
 	color: #fff;
 }
 
-.btn.dark {
-	color: #555;
-	background: #e2e2e2;
-	border: 2px solid #e2e2e2;
+.article-list .card .btn.dark {
+	background: #404040;
+	color: #fff;
+}
+
+.article-list .card .btn.dark:hover {
+	background: #fff;
+	color: #404040;
 }

@@ -26,7 +26,12 @@
 }
 
 .login-form.dark .btn {
-	color: #555;
-	background: #e2e2e2;
-	border: 2px solid #e2e2e2;
+	border: 2px solid #fff;
+	color: #fff;
+	background: none;
+}
+
+.login-form.dark .btn:hover {
+	background: #fff;
+	color: #333;
 }
