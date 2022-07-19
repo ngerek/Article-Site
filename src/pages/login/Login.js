@@ -1,12 +1,16 @@
 import { useState, useContext } from 'react';
 import { useLogin } from '../../hooks/useLogin';
 
+import { AuthContext } from '../../context/AuthContext';
+
 // styles
 import './Login.css';
 
 const Login = () => {
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
+
+	const { mode } = useContext(AuthContext);
 
 	const { login } = useLogin();
 
@@ -17,7 +21,7 @@ const Login = () => {
 	};
 
 	return (
-		<form className="login-form" onSubmit={handleSubmit}>
+		<form className={`login-form ${mode}`} onSubmit={handleSubmit}>
 			<h2>Login</h2>
 
 			<label>
