@@ -37,8 +37,6 @@ export const AuthContextProvider = ({ children }) => {
 	};
 
 	console.log('authContext state:', state.user);
-	console.log(state.isAuthReady);
-	console.log(state.mode);
 
 	return <AuthContext.Provider value={{ ...state, dispatch, changeMode }}>{children}</AuthContext.Provider>;
 };
