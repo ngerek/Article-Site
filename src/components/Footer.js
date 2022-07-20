@@ -1,29 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { FaFacebookSquare } from 'react-icons/fa';
+import { FaTwitterSquare } from 'react-icons/fa';
+import { FaInstagramSquare } from 'react-icons/fa';
+import { FaYoutube } from 'react-icons/fa';
+import { AuthContext } from '../context/AuthContext';
 
 // styles
 import './Footer.css';
 
 const Footer = () => {
+	const { mode } = useContext(AuthContext);
 	return (
-		<footer>
+		<footer className={`footer ${mode}`}>
 			<ul>
 				<li>
-					<Link to="#">ArticleSite</Link>
+					<h1>ArticleSite</h1>
 				</li>
-				<div>
+				<div className="social-media">
 					<li>
-						<Link to="#">ArticleSite</Link>
+						<Link to="#">
+							<FaFacebookSquare />
+						</Link>
 					</li>
 					<li>
-						<Link to="#">ArticleSite</Link>
+						<Link to="#">
+							<FaTwitterSquare />
+						</Link>
 					</li>
 					<li>
-						<Link to="#">ArticleSite</Link>
+						<Link to="#">
+							<FaInstagramSquare />
+						</Link>
+					</li>
+					<li>
+						<Link to="#">
+							<FaYoutube />
+						</Link>
 					</li>
 				</div>
 				<li>
-					<Link to="#">ArticleSite</Link>
+					<p>&copy; 2022</p>
 				</li>
 			</ul>
 		</footer>
