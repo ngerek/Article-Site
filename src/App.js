@@ -14,6 +14,7 @@ import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Error from './pages/error/Error';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App () {
 	const { user, isAuthReady, mode } = useContext(AuthContext);
@@ -21,36 +22,39 @@ function App () {
 		<div className={`App ${mode}`}>
 			{isAuthReady && (
 				<BrowserRouter>
-					<Navbar />
-					<Mode />
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
+					<div className="content-wrap">
+						<Navbar />
+						<Mode />
+						<Switch>
+							<Route exact path="/">
+								<Home />
+							</Route>
 
-						<Route path="/dashboard">
-							{user && <Dashboard />}
-							{!user && <Redirect to="/login" />}
-						</Route>
+							<Route path="/dashboard">
+								{user && <Dashboard />}
+								{!user && <Redirect to="/login" />}
+							</Route>
 
-						<Route path="/login">
-							{!user && <Login />}
-							{user && <Redirect to="/dashboard" />}
-						</Route>
+							<Route path="/login">
+								{!user && <Login />}
+								{user && <Redirect to="/dashboard" />}
+							</Route>
 
-						<Route path="/signup">
-							{!user && <Signup />}
-							{user && <Redirect to="/dashboard" />}
-						</Route>
+							<Route path="/signup">
+								{!user && <Signup />}
+								{user && <Redirect to="/dashboard" />}
+							</Route>
 
-						<Route path="/articles/:id">
-							<Article />
-						</Route>
+							<Route path="/articles/:id">
+								<Article />
+							</Route>
 
-						<Route path="*">
-							<Error />
-						</Route>
-					</Switch>
+							<Route path="*">
+								<Error />
+							</Route>
+						</Switch>
+					</div>
+					<Footer />
 				</BrowserRouter>
 			)}
 		</div>
