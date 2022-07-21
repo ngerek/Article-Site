@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useState, useEffect } from 'react';
 import { db, timestamp } from '../firestore/config';
 
 const initialState = {
@@ -25,6 +25,7 @@ const firestoreReducer = (state, action) => {
 
 export const useFirestore = (collection) => {
 	const [ state, dispatch ] = useReducer(firestoreReducer, initialState);
+	const [ isCancelled, setIsCancelled ] = useState(false);
 
 	// collection ref
 	const ref = db.collection(collection);
@@ -34,9 +35,13 @@ export const useFirestore = (collection) => {
 			dispatch({ type: 'IS_LOADING' });
 			await ref.add({ ...doc, createdAt: timestamp });
 
-			dispatch({ type: 'ADDED_DOCUMENT' });
+			if (!isCancelled) {
+				dispatch({ type: 'ADDED_DOCUMENT' });
+			}
 		} catch (error) {
-			dispatch({ type: 'ERROR', payload: error.message });
+			if (!isCancelled) {
+				dispatch({ type: 'ERROR', payload: error.message });
+			}
 		}
 	};
 
@@ -45,11 +50,19 @@ export const useFirestore = (collection) => {
 
 		try {
 			await ref.doc(id).delete();
-			dispatch({ type: 'DELETED_DOCUMENT' });
+			if (!isCancelled) {
+				dispatch({ type: 'DELETED_DOCUMENT' });
+			}
 		} catch (error) {
-			dispatch({ type: 'ERROR', payload: error.message });
+			if (!isCancelled) {
+				dispatch({ type: 'ERROR', payload: error.message });
+			}
 		}
 	};
+
+	useEffect(() => {
+		return () => setIsCancelled(true);
+	}, []);
 
 	return { addDocument, deleteDocument, state };
 };
