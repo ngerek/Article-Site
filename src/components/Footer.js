@@ -40,7 +40,7 @@ const Footer = () => {
 					</li>
 				</div>
 				<li>
-					<p>&copy; 2022</p>
+					<p>&copy; 2022 ArticleSite</p>
 				</li>
 			</ul>
 		</footer>
